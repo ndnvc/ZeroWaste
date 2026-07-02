@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="social_accent">#FFA000</color>
+    <color name="social_background">#F5F5F5</color>
+    <color name="social_primary">#2E7D32</color>
+    <color name="social_primary_dark">#1B5E20</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="already_have_account">Sudah punya akun? Masuk</string>
+    <string name="app_name">ZeroWaste</string>
+    <string name="dont_have_account">Belum punya akun? Daftar</string>
+    <string name="email">Email</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="login">Masuk</string>
+    <string name="password">Kata Sandi</string>
+    <string name="register">Daftar</string>
+    <string name="social_aid_tagline">Program Bantuan Sosial Terintegrasi</string>
+    <string name="zerowaste">ZeroWaste</string>
+    <style name="Base.Theme.ZEROWASTEAPK" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.ZEROWASTEAPK" parent="Base.Theme.ZEROWASTEAPK"/>
+</resources>
