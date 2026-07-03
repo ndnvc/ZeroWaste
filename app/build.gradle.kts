@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.zerowasteapk"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.zerowasteapk"
