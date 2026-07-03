@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="social_primary">#2E7D32</color>
+    <color name="social_primary_dark">#1B5E20</color>
+    <color name="social_background">#F5F5F5</color>
+    <color name="social_accent">#FFA000</color>
 </resources>

@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+apply(plugin = "realm-android")
+
 android {
     namespace = "com.example.zerowasteapk"
     compileSdk = 36

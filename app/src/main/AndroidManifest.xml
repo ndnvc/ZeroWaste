@@ -23,11 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-<<<<<<< Updated upstream:app/src/main/AndroidManifest.xml
             android:name=".RegisterActivity"
-=======
-            android:name=".MainActivity"
->>>>>>> Stashed changes:ZerowasteAPK/app/src/main/AndroidManifest.xml
             android:exported="false" />
         <activity
             android:name=".MainActivity"

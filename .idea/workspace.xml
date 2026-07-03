@@ -1,57 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_admin_user.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+    </layouts>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6fca4c0-1925-4070-aa09-f318600ad5af" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/AdminUserActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/DetailActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/LoginActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/MyApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/ProfileActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/RegisterActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/StatusActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/UploadActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/adapter/MakananAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/adapter/StatusAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/adapter/UserAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/models/Makanan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/models/Transaksi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/drawable/ic_back.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/drawable/ic_person.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_admin_user.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_detail.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_profile.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_status.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_upload.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/item_makanan.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/item_status.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/item_user.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zerowasteapk/MyApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zerowasteapk/UploadActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zerowasteapk/adapter/MakananAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zerowasteapk/models/Makanan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/.idea/planningMode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/.idea/planningMode.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/LoginActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/RegisterActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/ui/DashboardScreen.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/ui/DetailMakananScreen.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/ui/Models.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/ui/ProfileScreen.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/ui/StatusScreen.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/java/com/example/zerowasteapk/ui/UploadDonasiScreen.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZerowasteAPK/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/ZerowasteAPK/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/zerowasteapk/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/zerowasteapk/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +41,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LocalEmulator::path=C:\Users\user\.android\avd\Android224SI2.avd]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -74,9 +54,10 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ndnvc/ZeroWaste.git&quot;,
-    &quot;accountId&quot;: &quot;b00f1629-3143-4f54-ad5e-bbc2579e0f19&quot;
+    &quot;accountId&quot;: &quot;c3d2c2c8-4a67-43c7-8b5e-a2ba73b22cb6&quot;
   }
 }</component>
+  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\user\.gradle\wrapper\dists\gradle-8.14.5-bin\690y85m0j9nfaub7xoiayko8a\gradle-8.14.5" javaHome="C:\Program Files\Android\Android Studio\jbr" gradleVersion="8.14.5" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0,
   &quot;fromUser&quot;: false
@@ -92,6 +73,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
@@ -113,6 +95,74 @@
       <recent name="C:\Users\USER\OneDrive\ドキュメント\GitHub\ZeroWaste" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="zerowasteapk.app" />
+      <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="ALLOW_ASSUME_VERIFIED" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="RESTORE_FRESH_INSTALL_ONLY" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a6fca4c0-1925-4070-aa09-f318600ad5af" name="Changes" comment="" />
@@ -122,5 +172,21 @@
       <updated>1782665789032</updated>
     </task>
     <servers />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.example.zerowasteapk">
+          <value>
+            <CheckInfo lastCheckTimestamp="1783082302720" />
+          </value>
+        </entry>
+        <entry key="com.example.zerowasteapk.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1783082302680" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
