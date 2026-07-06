@@ -1,0 +1,1 @@
+This directory exists to ensure a standard structure.
