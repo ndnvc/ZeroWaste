@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">UASPROJECTZEROWASTE</string>
+
+    <string-array name="user_roles">
+        <item>Donatur</item>
+        <item>Penerima</item>
+    </string-array>
+    <string-array name="filter_jarak_options">
+        <item>Semua Jarak</item>
+        <item>Terdekat (&lt; 2 km)</item>
+        <item>Dekat (&lt; 5 km)</item>
+    </string-array>
+</resources>
