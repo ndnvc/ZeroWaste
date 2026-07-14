@@ -17,11 +17,11 @@ public class ZeroWasteApplication extends Application {
                 .allowWritesOnUiThread(true)
                 .deleteRealmIfMigrationNeeded()
                 .schemaVersion(1)
-                // MENJAMIN TABEL TERBENTUK SAAT DATABASE PERTAMA KALI DIBUAT
+
                 .initialData(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        // Menggunakan dynamic schema di dalam transaksi awal
+
                         RealmSchema schema = realm.getSchema();
                         if (!schema.contains("User")) {
                             schema.create("User")
