@@ -3,6 +3,7 @@ package com.example.uasproject_zerowaste;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -34,6 +35,9 @@ public class FoodListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvFoodList);
         spinnerFilter = findViewById(R.id.spinnerDistanceFilter);
         searchFood = findViewById(R.id.searchFood);
+
+        ImageButton btnBack = findViewById(R.id.btnBackFoodList);
+        btnBack.setOnClickListener(v -> finish());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

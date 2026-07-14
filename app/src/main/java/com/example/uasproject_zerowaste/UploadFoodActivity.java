@@ -3,6 +3,7 @@ package com.example.uasproject_zerowaste;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +25,9 @@ public class UploadFoodActivity extends AppCompatActivity {
         etExpiry = findViewById(R.id.etExpiry);
         etDescription = findViewById(R.id.etDescription);
         btnSubmitFood = findViewById(R.id.btnSubmitFood);
+
+        ImageButton btnBack = findViewById(R.id.btnBackUpload);
+        btnBack.setOnClickListener(v -> finish());
 
         btnSubmitFood.setOnClickListener(v -> {
             String name = etFoodName.getText().toString().trim();
