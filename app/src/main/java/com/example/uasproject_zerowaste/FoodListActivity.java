@@ -45,22 +45,29 @@ public class FoodListActivity extends AppCompatActivity {
 
     private void filterDataByDistance(int filterOption) {
         ArrayList<FoodDonation> filteredList = new ArrayList<>();
+
         for (FoodDonation food : originalList) {
+
             if (filterOption == 0) {
-                // Pilihan: "Semua Jarak"
                 filteredList.add(food);
+
             } else if (filterOption == 1) {
-                // Pilihan: "Terdekat (< 2 km)"
-                if (food.getDistance() < 2.0) {
+                if (food.getDistance() <= 2.0) {
                     filteredList.add(food);
                 }
+
             } else if (filterOption == 2) {
-                // Pilihan: "Dekat (< 5 km)"
-                if (food.getDistance() < 5.0) {
+                if (food.getDistance() <= 5.0) {
+                    filteredList.add(food);
+                }
+
+            } else if (filterOption == 3) {
+                if (food.getDistance() <= 10.0) {
                     filteredList.add(food);
                 }
             }
         }
+
         adapter.updateData(filteredList);
     }
 
