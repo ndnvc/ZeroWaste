@@ -16,6 +16,25 @@ public class UserRepository {
     public UserRepository(Context context) {
         dbHelper = new DatabaseHelper(context);
         db = dbHelper.getWritableDatabase();
+        seedDummyFoodData(); // Seed data if empty
+    }
+
+    private void seedDummyFoodData() {
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM FoodDonation", null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+
+        if (count == 0) {
+            // Data Dummy yang sesuai dengan Mock Coordinates di LocationUtils
+            uploadFoodDonation("Nasi Goreng Spesial", "Masih hangat, sisa acara.", 5, "22:00", "UPH Karawaci", 0);
+            uploadFoodDonation("Roti Bakar", "Roti gandum utuh.", 2, "20:00", "Lippo Village", 0);
+            uploadFoodDonation("Salad Buah", "Segar, baru dibuat pagi.", 3, "18:00", "Gading Serpong", 0);
+            uploadFoodDonation("Paket Nasi Box", "Menu ayam bakar.", 10, "21:00", "Alam Sutera", 0);
+            uploadFoodDonation("Kue Basah", "Aneka jajanan pasar.", 15, "17:00", "Tangerang Kota", 0);
+            uploadFoodDonation("Mie Ayam", "Porsi cukup besar.", 4, "19:00", "BSD City", 0);
+            uploadFoodDonation("Donat Assorted", "Satu lusin donat.", 1, "23:00", "AEON Mall", 0);
+        }
     }
 
     public boolean registerUser(String name, String email, String password, String phone) {
@@ -37,6 +56,7 @@ public class UserRepository {
         values.put("email", email);
         values.put("password", password);
         values.put("phoneNumber", phone);
+        values.put("address", "");
 
         long result = db.insert("User", null, values);
 
@@ -91,10 +111,30 @@ public class UserRepository {
         return null;
     }
 
+    public boolean updateUserAddress(String userId, String address) {
+        ContentValues values = new ContentValues();
+        values.put("address", address);
+        int rows = db.update("User", values, "userId=?", new String[]{userId});
+        return rows > 0;
+    }
+
+    public String getUserAddress(String userId) {
+        if (userId == null) return "";
+        Cursor cursor = db.rawQuery("SELECT address FROM User WHERE userId=?", new String[]{userId});
+        String address = "";
+        if (cursor.moveToFirst()) {
+            address = cursor.getString(0);
+        }
+        cursor.close();
+        return address != null ? address : "";
+    }
+
     public boolean uploadFoodDonation(String foodName,
                                       String description,
                                       int quantity,
-                                      String expiryTime) {
+                                      String expiryTime,
+                                      String location,
+                                      double distance) {
 
         ContentValues values = new ContentValues();
 
@@ -104,6 +144,8 @@ public class UserRepository {
         values.put("quantity", quantity);
         values.put("expiryTime", expiryTime);
         values.put("status", "Tersedia");
+        values.put("location", location);
+        values.put("distance", distance);
 
         long result = db.insert("FoodDonation", null, values);
 
@@ -118,32 +160,9 @@ public class UserRepository {
                 "SELECT * FROM FoodDonation ORDER BY rowid DESC",
                 null);
 
-        String[] dummyLocation = {
-                "Karawaci",
-                "Gading Serpong",
-                "Alam Sutera",
-                "Tangerang Kota",
-                "Binong",
-                "Cikokol"
-        };
-
-        double[] dummyDistance = {
-                1.2,
-                2.0,
-                3.8,
-                4.5,
-                6.2,
-                9.5
-        };
-
-        int index = 0;
-
         if (cursor.moveToFirst()) {
 
             do {
-
-                String location = dummyLocation[index % dummyLocation.length];
-                double distance = dummyDistance[index % dummyDistance.length];
 
                 FoodDonation food = new FoodDonation(
 
@@ -153,14 +172,12 @@ public class UserRepository {
                         cursor.getInt(cursor.getColumnIndexOrThrow("quantity")),
                         cursor.getString(cursor.getColumnIndexOrThrow("expiryTime")),
                         cursor.getString(cursor.getColumnIndexOrThrow("status")),
-                        location,
-                        distance
+                        cursor.getString(cursor.getColumnIndexOrThrow("location")),
+                        cursor.getDouble(cursor.getColumnIndexOrThrow("distance"))
 
                 );
 
                 list.add(food);
-
-                index++;
 
             } while (cursor.moveToNext());
 

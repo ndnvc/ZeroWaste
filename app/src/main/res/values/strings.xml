@@ -14,4 +14,15 @@
         <item>≤ 10 km</item>
     </string-array>
 
+    <string-array name="jabodetabek_locations">
+        <item>Karawaci</item>
+        <item>Lippo Village</item>
+        <item>Gading Serpong</item>
+        <item>Alam Sutera</item>
+        <item>BSD City</item>
+        <item>Tangerang Kota</item>
+        <item>Cikokol</item>
+        <item>Binong</item>
+        <item>Jakarta</item>
+    </string-array>
 </resources>

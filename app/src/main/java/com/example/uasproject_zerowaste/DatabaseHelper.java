@@ -4,10 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class
+DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "zerowaste_native.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -21,7 +22,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "name TEXT, " +
                 "email TEXT UNIQUE, " +
                 "password TEXT, " +
-                "phoneNumber TEXT)";
+                "phoneNumber TEXT, " +
+                "address TEXT)";
         db.execSQL(createTableUser);
 
         // UPDATE: Membuat Tabel FoodDonation baru
@@ -31,7 +33,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "description TEXT, " +
                 "quantity INTEGER, " +
                 "expiryTime TEXT, " +
-                "status TEXT)";
+                "status TEXT, " +
+                "location TEXT, " +
+                "distance REAL)";
         db.execSQL(createTableFood);
     }
 

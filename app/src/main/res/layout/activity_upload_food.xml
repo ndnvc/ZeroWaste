@@ -103,6 +103,24 @@
                         android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lokasi Penjemputan *"
+                    android:textSize="12sp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#2E7D32"
+                    android:textStyle="bold"/>
+
+                <Spinner
+                    android:id="@+id/spUploadLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/jabodetabek_locations" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"

@@ -34,4 +34,8 @@ public class FoodDonation {
     // UPDATE: Tambahkan Getter baru untuk lokasi dan jarak
     public String getLocation() { return location; }
     public double getDistance() { return distance; }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 }

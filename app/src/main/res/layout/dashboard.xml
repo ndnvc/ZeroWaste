@@ -46,15 +46,67 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#E0E0E0"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 Pilih Lokasi Jabodetabek"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#1A1D20"/>
+
+            <Spinner
+                android:id="@+id/spUserLocation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                android:entries="@array/jabodetabek_locations" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveAddress"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Simpan Lokasi"
+                android:textColor="#2E7D32"
+                android:layout_gravity="end"
+                app:icon="@android:drawable/ic_menu_save"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lokasi ini menentukan jarak ke donasi makanan di sekitar kamu."
+                android:textSize="11sp"
+                android:textColor="#757575"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp"
         app:strokeWidth="0dp"
         app:cardBackgroundColor="#E8F5E9"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+        app:layout_constraintTop_toBottomOf="@id/cardLocation">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
