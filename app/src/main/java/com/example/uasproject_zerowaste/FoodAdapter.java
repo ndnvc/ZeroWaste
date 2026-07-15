@@ -1,5 +1,6 @@
 package com.example.uasproject_zerowaste;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -78,6 +80,34 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         holder.tvExpiry.setText("Batas : " + food.getExpiryTime());
         holder.tvStatus.setText(food.getStatus());
 
+        // Logika visibilitas tombol "Batalkan Donasi"
+        if (currentUserId != null && currentUserId.equals(food.getUploaderId())) {
+            holder.btnCancelDonation.setVisibility(View.VISIBLE);
+            holder.btnClaim.setVisibility(View.GONE); // Pemilik tidak bisa klaim donasinya sendiri
+        } else {
+            holder.btnCancelDonation.setVisibility(View.GONE);
+            holder.btnClaim.setVisibility(View.VISIBLE);
+        }
+
+        holder.btnCancelDonation.setOnClickListener(v -> {
+            new AlertDialog.Builder(v.getContext())
+                    .setTitle("Batalkan Donasi")
+                    .setMessage("Apakah anda yakin ingin membatalkan donasi ini?")
+                    .setPositiveButton("Ya, Batalkan", (dialog, which) -> {
+                        boolean deleted = userRepository.deleteFoodDonation(food.getDonationId());
+                        if (deleted) {
+                            Toast.makeText(v.getContext(), "Donasi berhasil dibatalkan.", Toast.LENGTH_SHORT).show();
+                            foodList.remove(position);
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(position, foodList.size());
+                        } else {
+                            Toast.makeText(v.getContext(), "Gagal membatalkan donasi.", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Tidak", null)
+                    .show();
+        });
+
         if (food.getQuantity() <= 0 || food.getStatus().equalsIgnoreCase("Habis")) {
 
             holder.tvStatus.setText("Habis");
@@ -134,6 +164,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         TextView tvExpiry;
         TextView tvStatus;
         Button btnClaim;
+        Button btnCancelDonation;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -145,6 +176,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             tvExpiry = itemView.findViewById(R.id.tvItemExpiry);
             tvStatus = itemView.findViewById(R.id.tvItemStatus);
             btnClaim = itemView.findViewById(R.id.btnItemClaim);
+            btnCancelDonation = itemView.findViewById(R.id.btnItemCancelDonation);
         }
     }
 }

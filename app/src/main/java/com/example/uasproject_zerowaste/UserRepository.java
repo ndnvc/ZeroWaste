@@ -86,6 +86,10 @@ public class UserRepository {
         return db.insert("FoodDonation", null, values) != -1;
     }
 
+    public boolean deleteFoodDonation(String donationId) {
+        return db.delete("FoodDonation", "donationId=?", new String[]{donationId}) > 0;
+    }
+
     public ArrayList<FoodDonation> getAllFoodDonations() {
         ArrayList<FoodDonation> list = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM FoodDonation ORDER BY rowid DESC", null);

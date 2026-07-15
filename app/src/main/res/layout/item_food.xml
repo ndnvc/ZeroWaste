@@ -104,5 +104,18 @@
             app:backgroundTint="#1565C0"
             app:cornerRadius="8dp" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnItemCancelDonation"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Batalkan Donasi"
+            android:textSize="14sp"
+            android:textColor="#D32F2F"
+            app:strokeColor="#D32F2F"
+            app:cornerRadius="8dp"
+            android:visibility="gone" />
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
