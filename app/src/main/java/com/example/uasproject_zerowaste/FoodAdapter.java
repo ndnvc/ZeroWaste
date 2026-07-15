@@ -1,5 +1,6 @@
 package com.example.uasproject_zerowaste;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,56 +95,25 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             holder.tvStatus.setBackgroundColor(Color.parseColor("#2E7D32"));
 
             holder.btnClaim.setEnabled(true);
-            holder.btnClaim.setText("Klaim Makanan (Ambil 1)");
+            holder.btnClaim.setText("Klaim Makanan");
             holder.btnClaim.setBackgroundColor(Color.parseColor("#1565C0"));
 
             holder.btnClaim.setOnClickListener(v -> {
+                Intent intent = new Intent(v.getContext(), tampilan_barcode.class);
+                intent.putExtra("DONATION_ID", food.getDonationId());
+                intent.putExtra("FOOD_NAME", food.getFoodName());
+                intent.putExtra("USER_ID", currentUserId);
+                
+                // Add more details
+                User donorObj = userRepository.getUserById(food.getUploaderId());
+                intent.putExtra("DONOR_NAME", donorObj != null ? donorObj.getName() : "Anonim");
+                intent.putExtra("LOCATION", food.getLocation());
+                intent.putExtra("DISTANCE", food.getDistance());
+                intent.putExtra("EXPIRY", food.getExpiryTime());
+                intent.putExtra("QTY", food.getQuantity());
+                intent.putExtra("DESCRIPTION", food.getDescription());
 
-                boolean success = userRepository.claimFoodDonation(food.getDonationId(), currentUserId);
-
-                if (success) {
-
-                    Toast.makeText(
-                            v.getContext(),
-                            "Berhasil mengklaim 1 porsi " + food.getFoodName(),
-                            Toast.LENGTH_SHORT
-                    ).show();
-
-                    int qtyBaru = food.getQuantity() - 1;
-
-                    String statusBaru;
-
-                    if (qtyBaru == 0) {
-                        statusBaru = "Habis";
-                    } else {
-                        statusBaru = "Tersedia";
-                    }
-
-                    foodList.set(position,
-                            new FoodDonation(
-                                    food.getDonationId(),
-                                    food.getFoodName(),
-                                    food.getDescription(),
-                                    qtyBaru,
-                                    food.getExpiryTime(),
-                                    statusBaru,
-                                    food.getLocation(),
-                                    food.getDistance(),
-                                    food.getUploaderId()
-                            ));
-
-                    notifyItemChanged(position);
-
-                } else {
-
-                    Toast.makeText(
-                            v.getContext(),
-                            "Gagal mengklaim makanan.",
-                            Toast.LENGTH_SHORT
-                    ).show();
-
-                }
-
+                v.getContext().startActivity(intent);
             });
 
         }

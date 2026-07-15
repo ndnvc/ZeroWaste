@@ -27,6 +27,10 @@
         <activity android:name=".UploadFoodActivity" />
         <activity android:name=".FoodListActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".tampilan_barcode"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
