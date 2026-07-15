@@ -55,7 +55,7 @@ public class FoodListActivity extends AppCompatActivity {
             ).show();
         }
 
-        adapter = new FoodAdapter(new ArrayList<>(originalList));
+        adapter = new FoodAdapter(new ArrayList<>(originalList), currentUserId);
         recyclerView.setAdapter(adapter);
 
         // Filter berdasarkan jarak

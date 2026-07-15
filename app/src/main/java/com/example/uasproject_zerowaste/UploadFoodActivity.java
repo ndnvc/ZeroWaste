@@ -63,7 +63,7 @@ public class UploadFoodActivity extends AppCompatActivity {
             int qty = Integer.parseInt(qtyStr);
             double distance = 0.0;
 
-            boolean isSuccess = userRepository.uploadFoodDonation(name, desc, qty, expiry, location, distance);
+            boolean isSuccess = userRepository.uploadFoodDonation(name, desc, qty, expiry, location, distance, currentUserId);
             if (isSuccess) {
                 Toast.makeText(this, "Donasi makanan berhasil di-upload!", Toast.LENGTH_SHORT).show();
                 finish(); // Kembali ke Dashboard otomatis
