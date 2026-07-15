@@ -17,10 +17,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
     private ArrayList<FoodDonation> foodList;
     private UserRepository userRepository;
+    private String currentUserId;
 
     public FoodAdapter(ArrayList<FoodDonation> foodList) {
         this.foodList = foodList;
     }
+
+    public FoodAdapter(ArrayList<FoodDonation> foodList, String currentUserId) {
+        this.foodList = foodList;
+        this.currentUserId = currentUserId;
+    }
+
     public void updateData(ArrayList<FoodDonation> newList) {
         this.foodList = newList;
         notifyDataSetChanged();
@@ -83,7 +90,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
             holder.btnClaim.setOnClickListener(v -> {
 
-                boolean success = userRepository.claimFoodDonation(food.getDonationId());
+                boolean success = userRepository.claimFoodDonation(food.getDonationId(), currentUserId);
 
                 if (success) {
 

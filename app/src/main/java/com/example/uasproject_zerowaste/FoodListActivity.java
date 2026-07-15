@@ -3,6 +3,7 @@ package com.example.uasproject_zerowaste;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class FoodListActivity extends AppCompatActivity {
     private SearchView searchFood;
 
     private ArrayList<FoodDonation> originalList;
+    private String currentUserAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,15 @@ public class FoodListActivity extends AppCompatActivity {
         spinnerFilter = findViewById(R.id.spinnerDistanceFilter);
         searchFood = findViewById(R.id.searchFood);
 
+        ImageButton btnBack = findViewById(R.id.btnBackFoodList);
+        btnBack.setOnClickListener(v -> finish());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        originalList = userRepository.getAllFoodDonations();
+        String currentUserId = getIntent().getStringExtra("USER_ID");
+        currentUserAddress = userRepository.getUserAddress(currentUserId);
+
+        refreshDataAndCalculateDistance();
 
         if (originalList.isEmpty()) {
             Toast.makeText(
@@ -47,7 +55,7 @@ public class FoodListActivity extends AppCompatActivity {
             ).show();
         }
 
-        adapter = new FoodAdapter(new ArrayList<>(originalList));
+        adapter = new FoodAdapter(new ArrayList<>(originalList), currentUserId);
         recyclerView.setAdapter(adapter);
 
         // Filter berdasarkan jarak
@@ -151,11 +159,21 @@ public class FoodListActivity extends AppCompatActivity {
 
     }
 
+    private void refreshDataAndCalculateDistance() {
+        originalList = userRepository.getAllFoodDonations();
+        
+        // Dynamic Distance Calculation by the System
+        for (FoodDonation food : originalList) {
+            double calculatedDistance = LocationUtils.calculateDistance(currentUserAddress, food.getLocation());
+            food.setDistance(calculatedDistance);
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
-        originalList = userRepository.getAllFoodDonations();
+        refreshDataAndCalculateDistance();
 
         adapter.updateData(new ArrayList<>(originalList));
 

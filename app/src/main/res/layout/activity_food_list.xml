@@ -17,13 +17,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Jelajahi Makanan"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#1A1D20"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btnBackFoodList"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_revert"
+                android:contentDescription="Back"
+                android:layout_marginStart="-12dp"
+                app:tint="#1A1D20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jelajahi Makanan"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#1A1D20"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"

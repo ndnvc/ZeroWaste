@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#F8F9FA">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="16dp">
+        <Button android:id="@+id/btnMyDonations" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="Donasi Saya" android:textColor="#FFFFFF"
+            android:backgroundTint="#2E7D32" android:layout_marginEnd="8dp"/>
+        <Button android:id="@+id/btnMyClaims" android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="Klaim Saya" android:textColor="#FFFFFF"
+            android:backgroundTint="@android:color/darker_gray" android:layout_marginStart="8dp"/>
+    </LinearLayout>
+    <ListView android:id="@+id/lvHistory" android:layout_width="match_parent" android:layout_height="match_parent"
+        android:divider="#E0E0E0" android:dividerHeight="1dp" android:padding="16dp"/>
+</LinearLayout>
