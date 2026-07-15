@@ -52,6 +52,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
         holder.tvFoodName.setText(food.getFoodName());
 
+        // Menampilkan nama donatur
+        String donorId = food.getUploaderId();
+        User donor = userRepository.getUserById(donorId);
+        if (donor != null) {
+            holder.tvDonorName.setText("Donatur: " + donor.getName());
+        } else {
+            holder.tvDonorName.setText("Donatur: Anonim");
+        }
+
         String deskripsi = food.getDescription();
 
         if (deskripsi == null || deskripsi.isEmpty()) {
@@ -119,7 +128,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
                                     food.getExpiryTime(),
                                     statusBaru,
                                     food.getLocation(),
-                                    food.getDistance()
+                                    food.getDistance(),
+                                    food.getUploaderId()
                             ));
 
                     notifyItemChanged(position);
@@ -148,6 +158,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     public static class FoodViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvFoodName;
+        TextView tvDonorName;
         TextView tvDescription;
         TextView tvQty;
         TextView tvExpiry;
@@ -158,6 +169,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             super(itemView);
 
             tvFoodName = itemView.findViewById(R.id.tvItemFoodName);
+            tvDonorName = itemView.findViewById(R.id.tvItemDonorName);
             tvDescription = itemView.findViewById(R.id.tvItemDescription);
             tvQty = itemView.findViewById(R.id.tvItemQty);
             tvExpiry = itemView.findViewById(R.id.tvItemExpiry);

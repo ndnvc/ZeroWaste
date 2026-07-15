@@ -2,6 +2,7 @@ package com.example.uasproject_zerowaste;
 
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,8 +16,10 @@ import com.google.android.material.button.MaterialButton;
 public class activity_upload_food extends AppCompatActivity {
 
     private EditText etFoodName, etQuantity, etExpiry, etDescription;
+    private Spinner spUploadLocation;
     private MaterialButton btnSubmitFood;
     private UserRepository userRepository;
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +34,20 @@ public class activity_upload_food extends AppCompatActivity {
         });
 
         userRepository = new UserRepository(this);
+        currentUserId = getIntent().getStringExtra("USER_ID");
 
         etFoodName = findViewById(R.id.etFoodName);
         etQuantity = findViewById(R.id.etQuantity);
         etExpiry = findViewById(R.id.etExpiry);
         etDescription = findViewById(R.id.etDescription);
+        spUploadLocation = findViewById(R.id.spUploadLocation);
         btnSubmitFood = findViewById(R.id.btnSubmitFood);
 
         btnSubmitFood.setOnClickListener(v -> {
             String name = etFoodName.getText().toString().trim();
             String qtyStr = etQuantity.getText().toString().trim();
             String expiry = etExpiry.getText().toString().trim();
+            String location = spUploadLocation.getSelectedItem().toString();
             String desc = etDescription.getText().toString().trim();
 
             if (name.isEmpty() || qtyStr.isEmpty() || expiry.isEmpty()) {
@@ -51,7 +57,7 @@ public class activity_upload_food extends AppCompatActivity {
 
             int qty = Integer.parseInt(qtyStr);
 
-            boolean isSuccess = userRepository.uploadFoodDonation(name, desc, qty, expiry);
+            boolean isSuccess = userRepository.uploadFoodDonation(name, desc, qty, expiry, location, 0.0, currentUserId != null ? currentUserId : "unknown_user");
             if (isSuccess) {
                 Toast.makeText(this, "Donasi makanan berhasil di-upload!", Toast.LENGTH_SHORT).show();
                 finish();

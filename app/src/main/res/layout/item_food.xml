@@ -31,6 +31,16 @@
                 android:textColor="#1A1D20" />
 
             <TextView
+                android:id="@+id/tvItemDonorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvItemFoodName"
+                android:text="Donatur: Nama User"
+                android:textSize="12sp"
+                android:textColor="#2E7D32"
+                android:textStyle="italic" />
+
+            <TextView
                 android:id="@+id/tvItemStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
