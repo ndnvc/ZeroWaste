@@ -81,12 +81,17 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         holder.tvStatus.setText(food.getStatus());
 
         // Logika visibilitas tombol "Batalkan Donasi"
-        if (currentUserId != null && currentUserId.equals(food.getUploaderId())) {
+        if (currentUserId != null && currentUserId.equals(food.getUploaderId()) && food.getQuantity() > 0) {
             holder.btnCancelDonation.setVisibility(View.VISIBLE);
             holder.btnClaim.setVisibility(View.GONE); // Pemilik tidak bisa klaim donasinya sendiri
         } else {
             holder.btnCancelDonation.setVisibility(View.GONE);
-            holder.btnClaim.setVisibility(View.VISIBLE);
+            // Tombol klaim hanya muncul jika bukan pemilik
+            if (currentUserId != null && !currentUserId.equals(food.getUploaderId())) {
+                holder.btnClaim.setVisibility(View.VISIBLE);
+            } else {
+                holder.btnClaim.setVisibility(View.GONE);
+            }
         }
 
         holder.btnCancelDonation.setOnClickListener(v -> {

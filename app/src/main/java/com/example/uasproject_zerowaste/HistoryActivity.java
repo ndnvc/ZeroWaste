@@ -74,7 +74,7 @@ public class HistoryActivity extends AppCompatActivity {
                 tvQty.setText("Porsi: " + food.getQuantity() + " Pax");
                 tvExpiry.setText("Batas: " + food.getExpiryTime());
                 
-                if (isViewingDonations) {
+                if (isViewingDonations && food.getQuantity() > 0) {
                     btnCancel.setVisibility(View.VISIBLE);
                     btnCancel.setOnClickListener(v -> {
                         new AlertDialog.Builder(HistoryActivity.this)
