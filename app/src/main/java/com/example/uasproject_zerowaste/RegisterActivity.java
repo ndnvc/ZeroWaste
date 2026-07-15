@@ -40,6 +40,12 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
+            // Verifikasi email harus menggunakan @gmail.com
+            if (!email.toLowerCase().endsWith("@gmail.com")) {
+                Toast.makeText(this, "Email harus menggunakan domain @gmail.com", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             boolean isSuccess = userRepository.registerUser(name, email, password, phone);
             if (isSuccess) {
                 Toast.makeText(this, "Pendaftaran berhasil!", Toast.LENGTH_SHORT).show();
