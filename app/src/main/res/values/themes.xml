@@ -1,8 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.UASPROJECTZEROWASTE" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Warna Utama Aksen Oranye -->
+        <item name="colorPrimary">#E64A19</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#FFDBCF</item>
+        <item name="colorOnPrimaryContainer">#3B0900</item>
+
+        <!-- Warna Latar & Permukaan Card (Dark Charcoal & Light Gray) -->
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#212121</item>
+        <item name="android:colorBackground">#F9F9FB</item>
+
+        <!-- Warna Bar Status Atas HP -->
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.UASPROJECTZEROWASTE" parent="Base.Theme.UASPROJECTZEROWASTE" />

@@ -23,6 +23,9 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.material)
     implementation(libs.activity.ktx)
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
 
     // TAMBAHKAN DUA BARIS INI (Memanggil library Realm secara langsung)
     implementation("io.realm:realm-android-library:10.19.0")

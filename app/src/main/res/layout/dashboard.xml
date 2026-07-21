@@ -4,251 +4,275 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F9F9FB"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingBottom="40dp">
 
-        <TextView
-            android:id="@+id/tvWelcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Halo, Pengguna!"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#1A1D20"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Yuk, kurangi food waste dengan berbagi makanan surplus hari ini."
-            android:textSize="14sp"
-            android:textColor="#757575"
-            android:layout_marginTop="4dp"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnViewProfile"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LIHAT PROFIL SAYA 👤"
-            android:textColor="#2E7D32"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:paddingStart="0dp"/>
-
-        <!-- Location Card -->
-        <com.google.android.material.card.MaterialCardView
+        <!-- HEADER SECTION -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="#F3E5F5"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E1BEE7">
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="36dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="📍 Pilih Lokasi Jabodetabek"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="#1A1D20"
-                    android:layout_marginBottom="8dp"/>
-
-                <Spinner
-                    android:id="@+id/spUserLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@android:drawable/btn_default"
-                    android:entries="@array/jabodetabek_locations"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSaveAddress"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="💾 SIMPAN LOKASI"
-                    android:textColor="#2E7D32"
-                    android:textStyle="bold"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="4dp"
-                    app:iconTint="#2E7D32"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lokasi ini menentukan jarak ke donasi makanan di sekitar kamu."
-                    android:textSize="11sp"
-                    android:textColor="#757575"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Misi Hari Ini -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="#E8F5E9"
-            app:strokeWidth="1dp"
-            app:strokeColor="#C8E6C9">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Misi Hari Ini 🌍"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="#2E7D32"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Setiap donasi yang kamu klaim atau bagikan sangat berarti untuk menekan kelaparan."
-                    android:textSize="13sp"
-                    android:textColor="#455A64"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pilih Aksi"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#1A1D20"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Menu Buttons -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E0E0E0"
-            app:cardBackgroundColor="#FFFFFF">
-
-            <LinearLayout
-                android:id="@+id/btnViewFood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
                 android:orientation="horizontal"
-                android:padding="20dp"
                 android:gravity="center_vertical">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@android:drawable/ic_menu_search"
-                    app:tint="#8DB58F"/>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="16dp">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ZERO WASTE"
+                        android:textSize="12sp"
+                        android:letterSpacing="0.2"
+                        android:textStyle="bold"
+                        android:textColor="#E64A19"/>
+
+                    <TextView
+                        android:id="@+id/tvWelcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Halo, Pengguna!"
+                        android:textSize="26sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#212121"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnViewProfile"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_menu_myplaces"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:tint="#212121"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selamatkan makanan surplus hari ini dan tekan angka kelaparan bersama."
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+        <!-- FLOATING LOCATION BAR -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="-24dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="8dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="#212121">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="8dp"
+                android:paddingVertical="6dp"
+                android:gravity="center_vertical">
+
+                <Spinner
+                    android:id="@+id/spUserLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:entries="@array/jabodetabek_locations"
+                    android:popupBackground="#FFFFFF" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSaveAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="SET LOKASI"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#E64A19"
+                    app:cornerRadius="24dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- SUBTITLE AKSI -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AKSI UTAMA"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.15"
+            android:textColor="#757575"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- MENU CARDS -->
+        <!-- Card 1: Jelajahi Makanan -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnViewFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@android:drawable/ic_menu_search"
+                        app:tint="#212121"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Jelajahi Makanan"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1D20"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lihat dan klaim donasi surplus sekitar"
-                        android:textSize="12sp"
-                        android:textColor="#757575"/>
+                        android:textSize="18sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#212121"
+                        android:layout_marginStart="12dp"/>
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cari makanan surplus layak konsumsi di sekitarmu berdasarkan lokasi pilihan."
+                    android:textSize="14sp"
+                    android:textColor="#757575"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="CARI MAKANAN SEKARANG"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#E64A19"
+                    android:background="@drawable/bg_outline_orange" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Card 2: Upload Makanan -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnUploadFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E0E0E0"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp"
             app:cardBackgroundColor="#FFFFFF">
 
             <LinearLayout
-                android:id="@+id/btnUploadFood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="horizontal"
-                android:padding="20dp"
-                android:gravity="center_vertical">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@android:drawable/ic_menu_add"
-                    app:tint="#7DA3D1"/>
+                android:orientation="vertical"
+                android:padding="20dp">
+
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="16dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@android:drawable/ic_menu_add"
+                        app:tint="#212121"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Donasikan Makanan"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1D20"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bagikan makanan layak konsumsi milikmu"
-                        android:textSize="12sp"
-                        android:textColor="#757575"/>
+                        android:textSize="18sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#212121"
+                        android:layout_marginStart="12dp"/>
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Punya makanan berlebih? Bagikan porsinya di sini agar bisa diambil oleh yang membutuhkan."
+                    android:textSize="14sp"
+                    android:textColor="#757575"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="UNGGAH MAKANAN"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#E64A19"
+                    android:background="@drawable/bg_outline_orange" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Card 3: Riwayat Saya (PERBAIKAN: Clickable difokuskan di CardView) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:clickable="true"
             android:focusable="true"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#E0E0E0"
-            app:cardBackgroundColor="#FFFFFF"
-            android:layout_marginBottom="12dp">
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="#212121">
+
             <LinearLayout
                 android:id="@+id/btnHistory"
                 android:layout_width="match_parent"
@@ -256,31 +280,37 @@
                 android:orientation="horizontal"
                 android:padding="20dp"
                 android:gravity="center_vertical">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@android:drawable/ic_menu_recent_history"
-                    app:tint="#A58DB5"/>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_marginStart="16dp">
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Riwayat Saya"
-                        android:textSize="16sp"
+                        android:text="RIWAYAT AKTIVITAS"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.1"
                         android:textStyle="bold"
-                        android:textColor="#1A1D20"/>
+                        android:textColor="#E64A19"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lihat makanan yang kamu donasikan &amp; klaim"
-                        android:textSize="12sp"
-                        android:textColor="#757575"/>
+                        android:text="Donasi &amp; Klaim Saya"
+                        android:textSize="18sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="2dp"/>
                 </LinearLayout>
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@android:drawable/ic_menu_recent_history"
+                    app:tint="#FFFFFF"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

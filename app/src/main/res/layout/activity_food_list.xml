@@ -4,14 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA">
+    android:background="#F9F9FB">
 
+    <!-- Header Section -->
     <LinearLayout
         android:id="@+id/layoutHeaderList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="20dp"
         android:background="#FFFFFF"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,87 +28,97 @@
 
             <ImageButton
                 android:id="@+id/btnBackFoodList"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_revert"
                 android:contentDescription="Back"
-                android:layout_marginStart="-12dp"
-                app:tint="#1A1D20" />
+                android:layout_marginStart="-8dp"
+                app:tint="#212121" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jelajahi Makanan"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="#1A1D20"
+                android:fontFamily="sans-serif-black"
+                android:textColor="#212121"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cari dan klaim makanan surplus yang masih layak konsumsi."
+            android:text="Temukan makanan surplus layak konsumsi di sekitarmu."
             android:textSize="14sp"
-            android:textColor="#6C757D"
+            android:textColor="#757575"
             android:layout_marginTop="4dp"/>
 
     </LinearLayout>
 
+    <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchFood"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:queryHint="Cari makanan..."
+        android:background="@drawable/bg_search_pill"
+        android:queryHint="Cari makanan surplus..."
         android:iconifiedByDefault="false"
         app:layout_constraintTop_toBottomOf="@id/layoutHeaderList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <LinearLayout
+    <!-- Filter Bar -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/layoutFilter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:background="#FFFFFF"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/searchFood"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Filter Jarak"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textColor="#1A1D20"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="8dp">
 
-        <Spinner
-            android:id="@+id/spinnerDistanceFilter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:entries="@array/filter_jarak_options"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter Jarak:"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:textColor="#FF5722"/>
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/spinnerDistanceFilter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:entries="@array/filter_jarak_options"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
+    <!-- RecyclerView Grid Katalog -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFoodList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="24dp"
         android:clipToPadding="false"
         app:layout_constraintTop_toBottomOf="@id/layoutFilter"
         app:layout_constraintBottom_toBottomOf="parent"

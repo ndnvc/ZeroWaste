@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -40,7 +40,8 @@ public class FoodListActivity extends AppCompatActivity {
         ImageButton btnBack = findViewById(R.id.btnBackFoodList);
         btnBack.setOnClickListener(v -> finish());
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // UBAH: Menggunakan GridLayoutManager 2 Kolom ala Katalog Web Modern
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         String currentUserId = getIntent().getStringExtra("USER_ID");
         currentUserAddress = userRepository.getUserAddress(currentUserId);
@@ -161,7 +162,7 @@ public class FoodListActivity extends AppCompatActivity {
 
     private void refreshDataAndCalculateDistance() {
         originalList = userRepository.getAllFoodDonations();
-        
+
         // Dynamic Distance Calculation by the System
         for (FoodDonation food : originalList) {
             double calculatedDistance = LocationUtils.calculateDistance(currentUserAddress, food.getLocation());

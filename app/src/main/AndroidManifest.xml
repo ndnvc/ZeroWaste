@@ -12,25 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UASPROJECTZEROWASTE">
+
+        <!-- Activity Utama (Launcher/Login) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".UploadFoodActivity" />
-        <activity android:name=".FoodListActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity
-            android:name=".tampilan_barcode"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".DashboardActivity" android:exported="false" />
+        <activity android:name=".HistoryActivity" android:exported="false" />
+        <activity android:name=".FoodListActivity" android:exported="false" />
+        <activity android:name=".tampilan_barcode" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+        <!-- Menyelaraskan nama kelas Java (activity_upload_food / UploadFoodActivity) -->
+        <activity android:name=".UploadFoodActivity" android:exported="false" />
+        <activity android:name=".activity_upload_food" android:exported="false" />
+
+        <!-- Menyelaraskan nama kelas Java (activity_profile / ProfileActivity) -->
+        <activity android:name=".ProfileActivity" android:exported="false" />
+        <activity android:name=".activity_profile" android:exported="false" />
+
     </application>
 
 </manifest>

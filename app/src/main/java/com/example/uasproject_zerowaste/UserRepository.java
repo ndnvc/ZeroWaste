@@ -1,75 +1,58 @@
 package com.example.uasproject_zerowaste;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 public class UserRepository {
-    private DatabaseHelper dbHelper;
-    private SQLiteDatabase db;
+
+    private final UserDao userDao;
+    private final FoodDao foodDao;
 
     public UserRepository(Context context) {
-        dbHelper = new DatabaseHelper(context);
-        db = dbHelper.getWritableDatabase();
+        AppDatabase db = AppDatabase.getInstance(context);
+        this.userDao = db.userDao();
+        this.foodDao = db.foodDao();
         seedDummyFoodData();
     }
 
     private void seedDummyFoodData() {
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM FoodDonation", null);
-        cursor.moveToFirst();
-        int count = cursor.getInt(0);
-        cursor.close();
-        if (count == 0) {
-            uploadFoodDonation("Nasi Goreng Spesial", "Masih hangat, sisa acara.", 5, "22:00", "UPH Karawaci", 0);
-            uploadFoodDonation("Roti Bakar", "Roti gandum utuh.", 2, "20:00", "Lippo Village", 0);
-            uploadFoodDonation("Salad Buah", "Segar, baru dibuat pagi.", 3, "18:00", "Gading Serpong", 0);
+        if (foodDao.getFoodCount() == 0) {
+            uploadFoodDonation("Nasi Goreng Spesial", "Masih hangat, sisa acara.", 5, "22:00", "UPH Karawaci", 0.0, "unknown_user");
+            uploadFoodDonation("Roti Bakar", "Roti gandum utuh.", 2, "20:00", "Lippo Village", 0.0, "unknown_user");
+            uploadFoodDonation("Salad Buah", "Segar, baru dibuat pagi.", 3, "18:00", "Gading Serpong", 0.0, "unknown_user");
         }
     }
 
     public boolean registerUser(String name, String email, String password, String phone) {
-        Cursor cursor = db.rawQuery("SELECT * FROM User WHERE email = ?", new String[]{email});
-        if (cursor.getCount() > 0) { cursor.close(); return false; }
-        cursor.close();
-        ContentValues values = new ContentValues();
-        values.put("userId", UUID.randomUUID().toString());
-        values.put("name", name); values.put("email", email);
-        values.put("password", password); values.put("phoneNumber", phone); values.put("address", "");
-        return db.insert("User", null, values) != -1;
+        if (userDao.getUserByEmail(email) != null) {
+            return false; // Email duplikat
+        }
+        User newUser = new User(UUID.randomUUID().toString(), name, email, password, phone, "");
+        userDao.registerUser(newUser);
+        return true;
     }
 
     public User loginUser(String email, String password) {
-        Cursor cursor = db.rawQuery("SELECT * FROM User WHERE email=? AND password=?", new String[]{email, password});
-        if (cursor.moveToFirst()) {
-            User user = new User(cursor.getString(cursor.getColumnIndexOrThrow("userId")), cursor.getString(cursor.getColumnIndexOrThrow("name")), cursor.getString(cursor.getColumnIndexOrThrow("email")), cursor.getString(cursor.getColumnIndexOrThrow("password")), cursor.getString(cursor.getColumnIndexOrThrow("phoneNumber")));
-            cursor.close(); return user;
-        }
-        cursor.close(); return null;
+        return userDao.loginUser(email, password);
     }
 
     public User getUserById(String userId) {
-        Cursor cursor = db.rawQuery("SELECT * FROM User WHERE userId=?", new String[]{userId});
-        if (cursor.moveToFirst()) {
-            User user = new User(cursor.getString(cursor.getColumnIndexOrThrow("userId")), cursor.getString(cursor.getColumnIndexOrThrow("name")), cursor.getString(cursor.getColumnIndexOrThrow("email")), cursor.getString(cursor.getColumnIndexOrThrow("password")), cursor.getString(cursor.getColumnIndexOrThrow("phoneNumber")));
-            cursor.close(); return user;
-        }
-        cursor.close(); return null;
+        return userDao.getUserById(userId);
     }
 
     public boolean updateUserAddress(String userId, String address) {
-        ContentValues values = new ContentValues();
-        values.put("address", address);
-        return db.update("User", values, "userId=?", new String[]{userId}) > 0;
+        return userDao.updateUserAddress(userId, address) > 0;
     }
 
     public String getUserAddress(String userId) {
         if (userId == null) return "";
-        Cursor cursor = db.rawQuery("SELECT address FROM User WHERE userId=?", new String[]{userId});
-        String address = "";
-        if (cursor.moveToFirst()) address = cursor.getString(0);
-        cursor.close(); return address;
+        String address = userDao.getUserAddress(userId);
+        return address != null ? address : "";
     }
 
     public boolean uploadFoodDonation(String foodName, String description, int quantity, String expiryTime, String location, double distance) {
@@ -77,33 +60,28 @@ public class UserRepository {
     }
 
     public boolean uploadFoodDonation(String foodName, String description, int quantity, String expiryTime, String location, double distance, String uploaderId) {
-        ContentValues values = new ContentValues();
-        values.put("donationId", UUID.randomUUID().toString());
-        values.put("foodName", foodName); values.put("description", description);
-        values.put("quantity", quantity); values.put("expiryTime", expiryTime);
-        values.put("status", "Tersedia"); values.put("location", location);
-        values.put("distance", distance); values.put("uploaderId", uploaderId);
-        return db.insert("FoodDonation", null, values) != -1;
+        FoodDonation newFood = new FoodDonation(
+                UUID.randomUUID().toString(),
+                foodName,
+                description,
+                quantity,
+                expiryTime,
+                "Tersedia",
+                location,
+                distance,
+                uploaderId != null ? uploaderId : "unknown_user"
+        );
+        foodDao.insertFood(newFood);
+        return true;
     }
 
     public boolean deleteFoodDonation(String donationId) {
-        return db.delete("FoodDonation", "donationId=?", new String[]{donationId}) > 0;
+        return foodDao.deleteFoodDonation(donationId) > 0;
     }
 
     public ArrayList<FoodDonation> getAllFoodDonations() {
-        ArrayList<FoodDonation> list = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM FoodDonation ORDER BY rowid DESC", null);
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(new FoodDonation(
-                        cursor.getString(cursor.getColumnIndexOrThrow("donationId")), cursor.getString(cursor.getColumnIndexOrThrow("foodName")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("description")), cursor.getInt(cursor.getColumnIndexOrThrow("quantity")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("expiryTime")), cursor.getString(cursor.getColumnIndexOrThrow("status")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("location")), cursor.getDouble(cursor.getColumnIndexOrThrow("distance")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("uploaderId"))));
-            } while (cursor.moveToNext());
-        }
-        cursor.close(); return list;
+        List<FoodDonation> list = foodDao.getAllFoodDonations();
+        return new ArrayList<>(list);
     }
 
     public boolean claimFoodDonation(String donationId) {
@@ -111,63 +89,39 @@ public class UserRepository {
     }
 
     public boolean claimFoodDonation(String donationId, String userId) {
-        int currentQty = 0;
-        Cursor cursor = db.rawQuery("SELECT quantity FROM FoodDonation WHERE donationId=?", new String[]{donationId});
-        if (cursor.moveToFirst()) currentQty = cursor.getInt(0);
-        cursor.close();
-
-        if (currentQty <= 0) return false;
-
-        ContentValues values = new ContentValues();
-        values.put("quantity", currentQty - 1);
-        if ((currentQty - 1) == 0) values.put("status", "Habis");
-
-        int rows = db.update("FoodDonation", values, "donationId=?", new String[]{donationId});
-        if (rows > 0) {
-            ContentValues claimHistory = new ContentValues();
-            claimHistory.put("claimId", UUID.randomUUID().toString());
-            claimHistory.put("userId", userId); claimHistory.put("donationId", donationId);
-            claimHistory.put("claimDate", new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date()));
-            db.insert("ClaimHistory", null, claimHistory);
+        FoodDonation food = foodDao.getFoodById(donationId);
+        if (food == null || food.getQuantity() <= 0) {
+            return false;
         }
-        return rows > 0;
+
+        int newQty = food.getQuantity() - 1;
+        food.setQuantity(newQty);
+
+        if (newQty == 0) {
+            food.setStatus("Habis");
+        }
+
+        foodDao.updateFood(food);
+
+        // Tambah ke riwayat klaim
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        ClaimHistory claimHistory = new ClaimHistory(UUID.randomUUID().toString(), userId, donationId, currentDate);
+        foodDao.insertClaimHistory(claimHistory);
+
+        return true;
     }
 
     public ArrayList<FoodDonation> getMyUploadedDonations(String userId) {
-        ArrayList<FoodDonation> list = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM FoodDonation WHERE uploaderId=? ORDER BY rowid DESC", new String[]{userId});
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(new FoodDonation(
-                        cursor.getString(cursor.getColumnIndexOrThrow("donationId")), cursor.getString(cursor.getColumnIndexOrThrow("foodName")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("description")), cursor.getInt(cursor.getColumnIndexOrThrow("quantity")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("expiryTime")), cursor.getString(cursor.getColumnIndexOrThrow("status")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("location")), cursor.getDouble(cursor.getColumnIndexOrThrow("distance")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("uploaderId"))));
-            } while (cursor.moveToNext());
-        }
-        cursor.close(); return list;
+        List<FoodDonation> list = foodDao.getMyUploadedDonations(userId);
+        return new ArrayList<>(list);
     }
 
     public ArrayList<FoodDonation> getMyClaimedHistory(String userId) {
-        ArrayList<FoodDonation> list = new ArrayList<>();
-        String query = "SELECT f.* FROM FoodDonation f INNER JOIN ClaimHistory c ON f.donationId = c.donationId WHERE c.userId = ? ORDER BY c.rowid DESC";
-        Cursor cursor = db.rawQuery(query, new String[]{userId});
-        if (cursor.moveToFirst()) {
-            do {
-                list.add(new FoodDonation(
-                        cursor.getString(cursor.getColumnIndexOrThrow("donationId")), cursor.getString(cursor.getColumnIndexOrThrow("foodName")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("description")), cursor.getInt(cursor.getColumnIndexOrThrow("quantity")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("expiryTime")), cursor.getString(cursor.getColumnIndexOrThrow("status")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("location")), cursor.getDouble(cursor.getColumnIndexOrThrow("distance")),
-                        cursor.getString(cursor.getColumnIndexOrThrow("uploaderId"))));
-            } while (cursor.moveToNext());
-        }
-        cursor.close(); return list;
+        List<FoodDonation> list = foodDao.getMyClaimedHistory(userId);
+        return new ArrayList<>(list);
     }
 
     public void close() {
-        if (db != null && db.isOpen()) db.close();
-        if (dbHelper != null) dbHelper.close();
+        // Room mengelola sesi koneksi secara otomatis
     }
 }

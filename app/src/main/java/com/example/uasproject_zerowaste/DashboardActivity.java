@@ -1,19 +1,25 @@
 package com.example.uasproject_zerowaste;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 public class DashboardActivity extends AppCompatActivity {
 
     private TextView tvWelcome;
-    private LinearLayout btnViewFood, btnUploadFood, btnHistory;
-    private MaterialButton btnSaveAddress, btnViewProfile;
+    private MaterialCardView btnViewFood, btnUploadFood, cardHistory;
+    private MaterialButton btnSaveAddress;
+    private ImageView btnViewProfile;
     private Spinner spUserLocation;
     private UserRepository userRepository;
     private String currentUserId;
@@ -25,11 +31,11 @@ public class DashboardActivity extends AppCompatActivity {
 
         userRepository = new UserRepository(this);
 
-        // Menghubungkan variabel dengan ID di XML
+        // Menghubungkan variabel dengan ID di XML baru
         tvWelcome = findViewById(R.id.tvWelcome);
         btnViewFood = findViewById(R.id.btnViewFood);
         btnUploadFood = findViewById(R.id.btnUploadFood);
-        btnHistory = findViewById(R.id.btnHistory);
+        cardHistory = findViewById(R.id.cardHistory);
         spUserLocation = findViewById(R.id.spUserLocation);
         btnSaveAddress = findViewById(R.id.btnSaveAddress);
         btnViewProfile = findViewById(R.id.btnViewProfile);
@@ -44,7 +50,20 @@ public class DashboardActivity extends AppCompatActivity {
             tvWelcome.setText("Halo, Pengguna!");
         }
 
-        // Aksi tombol
+        // Agar teks Spinner yang terpilih berwarna putih di atas latar belakang gelap
+        spUserLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (view instanceof TextView) {
+                    ((TextView) view).setTextColor(Color.WHITE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        // Aksi simpan lokasi
         btnSaveAddress.setOnClickListener(v -> {
             String address = spUserLocation.getSelectedItem().toString();
             if (currentUserId != null) {
@@ -53,6 +72,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        // Aksi navigasi menu
         btnViewFood.setOnClickListener(v -> {
             Intent i = new Intent(this, FoodListActivity.class);
             i.putExtra("USER_ID", currentUserId);
@@ -65,11 +85,21 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-        btnHistory.setOnClickListener(v -> {
+        // Penanganan klik ganda untuk Riwayat (mencegah event klik terhalang oleh child layout)
+        View.OnClickListener historyClickListener = v -> {
             Intent i = new Intent(this, HistoryActivity.class);
             i.putExtra("USER_ID", currentUserId);
             startActivity(i);
-        });
+        };
+
+        if (cardHistory != null) {
+            cardHistory.setOnClickListener(historyClickListener);
+        }
+
+        View btnHistory = findViewById(R.id.btnHistory);
+        if (btnHistory != null) {
+            btnHistory.setOnClickListener(historyClickListener);
+        }
 
         btnViewProfile.setOnClickListener(v -> {
             Intent i = new Intent(this, ProfileActivity.class);
