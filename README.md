@@ -24,7 +24,7 @@ Goal 12: Responsible Consumption and Production (Konsumsi dan Produksi yang Bert
 
 Autentikasi Pengguna: Pendaftaran dan Login yang aman untuk pengguna.
 
-Dashboard (Daily Grocery Food): Menampilkan daftar persediaan makanan, kategori (Buah, Makanan Cepat Saji, Sayuran), dan kalori.
+Dashboard: Halaman beranda yang menampilkan daftar persediaan makanan pengguna.
 
 Upload Food: Memungkinkan pengguna untuk mengunggah detail makanan yang ingin didonasikan atau dicatat, lengkap dengan informasi tanggal kedaluwarsa dan kuantitas.
 
